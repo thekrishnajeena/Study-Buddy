@@ -14,12 +14,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -28,18 +25,17 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.krishnajeena.studybuddy.R
-import kotlinx.coroutines.CoroutineScope
 
 
 @Composable
-fun MainAuthenticationScreen(modifier: Modifier = Modifier) {
+fun MainAuthenticationScreen(modifier: Modifier = Modifier, navController: NavHostController) {
 
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -53,7 +49,7 @@ fun MainAuthenticationScreen(modifier: Modifier = Modifier) {
             launcher = null,
             login = {
                 Toast.makeText(context, "Login", Toast.LENGTH_LONG).show()
-
+                navController.navigate("homeScreen")
             }
         )
     }
@@ -120,6 +116,7 @@ fun MainAuthenticationScreen(modifier: Modifier = Modifier) {
                     launcher = launcher,
                     login = {
                         Toast.makeText(context, "Login", Toast.LENGTH_LONG).show()
+                        navController.navigate("homeScreen")
                     }
                 )
             },
@@ -143,12 +140,5 @@ fun MainAuthenticationScreen(modifier: Modifier = Modifier) {
     }
 
 
-
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun MainAuthenticationScreenPreview(){
-    MainAuthenticationScreen()
 
 }
